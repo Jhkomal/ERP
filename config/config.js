@@ -9,7 +9,7 @@ const config = {
   // Page URLs
   urls: {
     home: '/',
-    signup: '/signup',
+    signup: '/auth/register',
     login: '/login',
     dashboard: '/dashboard',
     profile: '/profile',
@@ -20,7 +20,7 @@ const config = {
     user: {
       firstName: 'John',
       lastName: 'Doe',
-      email: 'john.doe@example.com',
+      email: 'john.doe@yopmail.com',
       password: 'Test@1234',
     },
   },

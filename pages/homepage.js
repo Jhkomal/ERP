@@ -4,12 +4,12 @@ class HomePage extends BasePage {
     super(page);
   }
 
- get clickStartLink() {
-    return this.page.locator('a', { hasText: /start/i });
+  get startLink() {
+    return this.page.getByRole('link', { name: 'Start for Free' });
   }
-   
-  async clickStartLink(){
-    await this.clickElement(this.clickStartLink);
+
+  async clickStartLink() {
+    await this.clickElement(this.startLink);
   }
 }
 

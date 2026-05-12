@@ -4,77 +4,52 @@ class signupPage extends BasePage {
         super(page);
     }
 
-    get accountHeading(){
-        return this.page.locator("//h1[contains(text(),'Create Your Account')]");
-    }
-
-    get firstNameInput(){
-        return this.page.locator("//input[contains(@name,'first_name')]");
-    }
-
-    get lastNameInput(){
-        return this.page.locator("//input[contains(@name,'last_name')]");
-         }
-  get companyNameInput() {
+    get companyNameInput() {
         return this.page.locator("//input[contains(@placeholder,'company name')]");
     }
 
-
-    get phoneNumberInput() {
-        return this.page.locator("//input[contains(@placeholder,'phone number')]");
-    }
-
-    
-    get countryDropdown() {
-        return this.page.locator("//select[contains(@name,'country')]");
-    }
-
-
-    get panNumberInput() {
-        return this.page.locator("//input[contains(@placeholder,'PAN number')]");
-    }
-
-  
     get emailInput() {
-        return this.page.locator("//input[contains(@placeholder,'email')]");
+        return this.page.locator("//input[contains(@name,'email')]");
     }
-
 
     get passwordInput() {
-        return this.page.locator("//input[contains(@placeholder,'strong password')]");
+        return this.page.locator("//input[contains(@name,'password')]");
     }
 
-  
     get confirmPasswordInput() {
-        return this.page.locator("//input[contains(@placeholder,'Confirm your password')]");
+        return this.page.locator("//input[contains(@name,'confirmPassword')]");
+    }
+
+    get workspaceInput() {
+        return this.page.locator("//input[contains(@placeholder,'my-workspace')]");
+    }
+
+    get countrySearchInput() {
+        return this.page.locator("//input[contains(@Placeholder,'Search country')]");
+    }
+
+    get nepalOption() {
+        return this.page.locator("//div[contains(text(),'Nepal')] | //span[contains(text(),'Nepal')] | //li[contains(text(),'Nepal')]");
+    }
+
+    get contactNumberInput() {
+        return this.page.locator("//input[contains(@type,'tel')]");
+    }
+
+    get termsCheckbox() {
+        return this.page.locator("//input[contains(@id,'terms')]");
+    }
+
+    get accountHeading() {
+        return this.page.locator("//h1[contains(text(),'Create Account')] | //h2[contains(text(),'Create Account')] | //div[contains(text(),'Create Account')]");
     }
 
     get createAccountBtn() {
-        return this.page.locator("//button[contains(text(),'Create Account')]");
-    }
-
-    async fillFirstName(value) {
-        await this.firstNameInput.fill(value);
-    }
-
-    async fillLastName(value) {
-        await this.lastNameInput.fill(value);
+        return this.page.locator("//button[contains(@type ,'submit')]");
     }
 
     async fillCompanyName(value) {
         await this.companyNameInput.fill(value);
-    }
-
-    async fillPhoneNumber(value) {
-        await this.phoneNumberInput.fill(value);
-    }
-
-    async selectCountry(value) {
-        await this.countryDropdown.selectOption(value);
-    }
-
-    async fillPanNumber(value) {
-        await this.panNumberInput.fill(value);
     }
 
     async fillEmail(value) {
@@ -93,17 +68,28 @@ class signupPage extends BasePage {
         await this.createAccountBtn.click();
     }
 
-    
+    async waitForWorkspaceAutoFill() {
+        await this.workspaceInput.waitFor({ state: 'visible' });
+    }
+
+    async selectNepal() {
+        await this.countrySearchInput.fill('Nepal');
+        await this.nepalOption.click();
+    }
+
+    async fillContactNumber() {
+        await this.contactNumberInput.fill('9819384203');
+    }
+
+    async checkTermsCheckbox() {
+        await this.termsCheckbox.check();
+    }
+
     async fillForm(data) {
-        await this.fillFirstName(data.firstName);
-        await this.fillLastName(data.lastName);
         await this.fillCompanyName(data.companyName);
-        await this.fillPhoneNumber(data.phoneNumber);
-        await this.selectCountry(data.country);
-        await this.fillPanNumber(data.panNumber);
         await this.fillEmail(data.email);
         await this.fillPassword(data.password);
-        await this.fillConfirmPassword(data.confirmPassword);
+        await this.fillConfirmPassword(data.password);
         await this.clickCreateAccount();
     }
 }
