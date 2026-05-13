@@ -81,6 +81,10 @@ class signupPage extends BasePage {
         await this.contactNumberInput.fill('9819384203');
     }
 
+    async fillWorkspace(value) {
+        await this.workspaceInput.fill(value);
+    }
+
     async checkTermsCheckbox() {
         await this.termsCheckbox.check();
     }
