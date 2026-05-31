@@ -283,7 +283,7 @@ test.describe('Signup Validation Tests', () => {
     await expect(errorMsg).toBeVisible({ timeout: 5000 });
   });
 
-  // ===== EDGE CASES =====
+
   test('TC020: Very long company name should be handled', async () => {
     const longName = 'A'.repeat(100) + ' Company Solutions';
     await signupPage.fillElement(signupPage.companyNameInput, longName);
@@ -292,7 +292,7 @@ test.describe('Signup Validation Tests', () => {
     const isError = await errorMsg.isVisible().catch(() => false);
     if (isError) {
       expect(isError).toBe(true);
-    } else {
+    } else { 
       console.log('System accepts long company names');
     }
   });

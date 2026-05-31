@@ -3,8 +3,9 @@
  */
 
 const config = {
-  // Base URL
+  // Base URLs
   baseURL: 'https://pratyusha.com.np',
+  adminBaseURL: 'https://microsoft.pratyusha.com.np',
 
   // Page URLs
   urls: {
@@ -13,15 +14,17 @@ const config = {
     login: '/login',
     dashboard: '/dashboard',
     profile: '/profile',
+    adminLogin: '/admin/auth/login',
+    adminDashboard: '/admin/dashboard',
   },
 
   // Test data
   testData: {
     user: {
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john.doe@yopmail.com',
-      password: 'Test@1234',
+      firstName: 'Admin',
+      lastName: 'User',
+      email: 'microsoft01@yopmail.com',
+      password: 'Password@123',
     },
   },
 
